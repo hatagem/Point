@@ -1,0 +1,71 @@
+{
+  "_args": [
+    [
+      "../nodebb-plugin-ns-points",
+      "/root/nodebb"
+    ]
+  ],
+  "_from": "../nodebb-plugin-ns-points",
+  "_id": "nodebb-plugin-ns-points@4.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/nodebb-plugin-ns-points",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": null,
+    "raw": "../nodebb-plugin-ns-points",
+    "rawSpec": "../nodebb-plugin-ns-points",
+    "scope": null,
+    "spec": "/root/nodebb-plugin-ns-points",
+    "type": "directory"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../nodebb-plugin-ns-points",
+  "_shasum": "03356dc68f0ca2f866df5048f0ed94b320cd821f",
+  "_shrinkwrap": null,
+  "_spec": "../nodebb-plugin-ns-points",
+  "_where": "/root/nodebb",
+  "author": {
+    "name": "Nicolas Siver"
+  },
+  "bugs": {
+    "url": "https://github.com/NicolasSiver/nodebb-plugin-ns-points/issues"
+  },
+  "dependencies": {
+    "async": "^2.0.1",
+    "lodash": "^4.15.0",
+    "object-assign": "^4.1.0"
+  },
+  "description": "Additional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.",
+  "devDependencies": {},
+  "gitHead": "b2872c8330169f837045aeb7c3dabc5f562d00d6",
+  "homepage": "https://github.com/NicolasSiver/nodebb-plugin-ns-points#readme",
+  "keywords": [
+    "experience",
+    "gamification",
+    "metrics",
+    "nodebb",
+    "plugin",
+    "points",
+    "profile"
+  ],
+  "license": "MIT",
+  "main": "./plugin/index.js",
+  "name": "nodebb-plugin-ns-points",
+  "nbbpm": {
+    "compatibility": "^1.x"
+  },
+  "optionalDependencies": {},
+  "readme": "# NodeBB: Points\n\nAdditional metrics for User Profiles. It's like experience in video games. Plugin is good for gamification of your board.\n\n![Version](https://img.shields.io/npm/v/nodebb-plugin-ns-points.svg)\n![Dependencies](https://david-dm.org/NicolasSiver/nodebb-plugin-ns-points.svg)\n![bitHound Score](https://www.bithound.io/github/NicolasSiver/nodebb-plugin-ns-points/badges/score.svg)\n![Code Climate](https://img.shields.io/codeclimate/github/NicolasSiver/nodebb-plugin-ns-points.svg)\n\n<!-- START doctoc generated TOC please keep comment here to allow auto update -->\n<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->\n \n\n- [Ranking Calculation](#ranking-calculation)\n- [Themes](#themes)\n  - [Profile View](#profile-view)\n  - [Topic View](#topic-view)\n- [TODO](#todo)\n\n<!-- END doctoc generated TOC please keep comment here to allow auto update -->\n\n## The Ranking Calculation\n\nThe Ranking calculator is a function, that should accept 2 parameters - settings and raw points.\nSettings could vary from one calculator to another. Calculator must return object with properties listed below:\n\n- `rank` [Number] - user's rank, level\n- `rankProgress` [Number] - amount of points on current level\n- `rankTotal` [Number] - amount of points needed to level-up\n- `total` [Number] - raw amount of points\n\nExample: [Default Function](https://github.com/NicolasSiver/nodebb-plugin-ns-points/blob/f34a4cf6c69b4c8b1abbf88efc3a0f1d8ad6fcf2/public/js/ranking.js#L9-L27)\n\n## Themes\n\nPlugin populates both: `Profile` and `Topic` views. Search for `points` property in corresponding entities.\nDon't forget to add link on _overview_ page, link should look like - `/points`\n\n### Profile View\n\nIf you want points in Profile, do very basic changes to your theme:\n\n> Example: Persona Theme, `v4`, find `templates/account/profile.tpl`, edit template in package directory - `node_modules`\n\nFind block that is responsible for [stats](https://github.com/NodeBB/nodebb-theme-persona/blob/4c32d4b0b16711bde6ee84d6b18dfb13dbfc24c0/templates/account/profile.tpl#L14-L41), and insert template where you want: \n\n```html\n<div class=\"account-stats\">\n\n    ...\n\n    <!-- IMPORT partials/points_profile.tpl -->\n    \n    ...\n\n</div>\n```\n\n### Topic View\n\nEvery post will have additional field: `points`.\nIf you want utilize points calculation feature in topic view, you should use theme that supports such type of integration.\n\n## TODO\n\n- Add Gifts: ability to add points through ACP with a notification\n- Add Transfers: user can transfer some of his points as a reward for some bounty or help or user generated competition\n- Add Points Grid: multipliers or raw values for different categories\n- Add Fresh Points: provide information for points that are earned today\n- Add Complexity to Point calculation: encourage tags in topic creation\n- Add Custom ranking calculators\n- Add ACP Panel for raw point rewards\n- Add API for raw point rewards\n- Add Custom Notifications for levels\n- Add Presets for ranking calculation\n- Add Sections to Overview page: all time, today, personal.\n- Add Utility for initial point calculation\n- Add Tests (Mocha/Tape)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasSiver/nodebb-plugin-ns-points.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "4.0.0"
+}
